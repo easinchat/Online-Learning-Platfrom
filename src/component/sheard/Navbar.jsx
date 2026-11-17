@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Navlink from "./Navlink";
-import { authClient } from "@/lib/auth-client";
+import { authClient, signIn } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 
 const Navbar = () => {
@@ -28,6 +28,12 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  const signInWithGoogle = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  };
 
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -79,8 +85,6 @@ const Navbar = () => {
               className="btn bg-purple-500 text-white"
               onClick={async () => {
                 await authClient.signOut();
-                router.push("/login");
-                router.refresh();
               }}
             >
               LogOut
@@ -88,13 +92,17 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <Link href="/login" className="btn">
-              Login
-            </Link>
+            <button>
+              <Link href="/login" className="btn">
+                Login
+              </Link>
+            </button>
 
-            <Link href="/register" className="btn">
-              Register
-            </Link>
+            <button onClick={signInWithGoogle}>
+              <Link href="/register" className="btn">
+                Google Sign In
+              </Link>
+            </button>
           </>
         )}
       </div>
