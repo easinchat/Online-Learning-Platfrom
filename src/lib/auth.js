@@ -6,7 +6,10 @@ const client = new MongoClient(process.env.MONGO_URI);
 const db = client.db("eLearning");
 
 export const auth = betterAuth({
-  baseURL: process.env.BETTER_AUTH_URL,
+  trustedOrigins: [
+    "https://online-learning-platfrom-xi.vercel.app",
+    "http://localhost:3000",
+  ],
   emailAndPassword: {
     enabled: true,
   },
