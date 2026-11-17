@@ -21,7 +21,8 @@ const LoginPage = () => {
     });
     console.log(res, error);
     if (error) {
-      alert("Please type valid email and password or Sign Up");
+      console.log("LOGIN ERROR:", error);
+      alert(error.message);
     }
     if (res) {
       alert("Sign in successfully");
