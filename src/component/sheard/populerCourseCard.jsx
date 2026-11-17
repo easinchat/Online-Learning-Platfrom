@@ -1,6 +1,6 @@
 import { FaStar, FaRegHeart } from "react-icons/fa";
 
-const CourseCard = ({ course }) => {
+const PopulerCourseCard = ({ course }) => {
   return (
     <div className="card bg-base-100 shadow-xl border border-base-200 hover:shadow-2xl transition duration-300">
       <figure className="relative">
@@ -47,4 +47,4 @@ const CourseCard = ({ course }) => {
   );
 };
 
-export default CourseCard;
+export default PopulerCourseCard;

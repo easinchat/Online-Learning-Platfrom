@@ -1,10 +1,8 @@
 import React from "react";
 import courses from "@/lib/course.json";
-import CourseCard from "../sheard/CourseCard";
+import PopulerCourseCard from "../sheard/populerCourseCard";
 
 const PopularCourses = () => {
-  // const courseData = courses;
-
   const topCourses = [...courses]
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 3);
@@ -23,7 +21,10 @@ const PopularCourses = () => {
       <h2 className="font-bold text-3xl text-center mb-10"></h2>
       <div className="grid grid-cols-3 gap-5 ">
         {topCourses.map((course) => (
-          <CourseCard key={course.id} course={course}></CourseCard>
+          <PopulerCourseCard
+            key={course.id}
+            course={course}
+          ></PopulerCourseCard>
         ))}
       </div>
     </div>
